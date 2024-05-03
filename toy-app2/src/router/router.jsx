@@ -1,6 +1,7 @@
 import ReactDOM from "react-dom/client";
 import React from "react";
 import Landing from "./Landing";
+import AddProduct from "../../../src/components/AddProduct";
 import Root from "./Root";
 ;
 import { createHashRouter, RouterProvider } from "react-router-dom";
@@ -12,7 +13,7 @@ const router = createHashRouter([
 		children: [
 			{
 				// we use index that tell the router that this is the default page
-				index: true,
+				path: "Landing",
 				element: <Landing />,
 			},
 			{
@@ -25,13 +26,13 @@ const router = createHashRouter([
 			},
 
             {
-				path: "Addproducts",
-				element: <AddProducts />,
+				path: "Addproduct",
+				element: <AddProduct />,
 			},
 
             {
 				path: "EditProduct",
-				element: <EditProducts />,
+				element: <EditProduct />,
 			},
 		],
 	},
