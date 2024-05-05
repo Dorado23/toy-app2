@@ -3,6 +3,8 @@ import AddProduct from './components/AddProduct'
 import Navbar from './components/Navbar'
 import About from './components/About'
 import Search from './components/Search'
+//import Products from './routes/Products'
+//import ProductsContextProvider from './components/ProductsContext'
 
 
 
@@ -17,6 +19,8 @@ function App() {
      <About />
      <Navbar />
      <AddProduct />
+
+     
      
      </div>
   )

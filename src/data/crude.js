@@ -1,6 +1,8 @@
 import { collection, getDocs, addDoc, deleteDoc, updateDoc, doc } from 'firebase/firestore/lite';
 import { db } from './fire.js';
 
+
+
 const collectionName = 'products';
 const collectionRef = collection(db, collectionName);
 

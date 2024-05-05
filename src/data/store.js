@@ -4,7 +4,7 @@ import { create } from 'zustand'
 const useStore = create(set => ({
 	products: [],
 
-	setProducts: newProducts => set(state => ({
+	/*setProducts: newProducts => set(state => ({
 		products: newProducts
 	})),
 
@@ -14,9 +14,9 @@ const useStore = create(set => ({
 
     increaseProducts: () => set((state) => ({ count: state.count + 1 })),
 
-    decreaseProducts: () => set((state) => ({ count: state.count - 1 })),
+    decreaseProducts: () => set((state) => ({ count: state.count - 1 })),*/
 }));
 
 
 
-export { useStore };
+export { useStore }

@@ -1,18 +1,17 @@
 import React from 'react'
 import { useState } from 'react'
 import { useStore } from '../data/store.js'
-import { db } from '../data/fire.js'
-import { storageInstance } from '../data/fire.js'
-
-//import { addProduct, getProduct} from '../data/crude.js'
+import { addProduct, getProducts} from '../data/crude.js'
+import { db } from '../data/crude.js'
 
 
+const collectionRef = db.collection('collectionName');
 const AddProduct = () => {
 
 	const [isLoading, setIsLoading] = useState(false)
-	const [productName, setProductName] = useState('')
-	const [productPrice, setProductPrice] = useState(0)
-    const [productImg, setProductImg] = useState(null)
+	const [name, setName] = useState('')
+	const [price, setPrice] = useState(0)
+    const [imgage, setImage] = useState(null)
 	const setProduct = useStore(state => state.setProduct)
     const [error, setError] = useState('')
 
@@ -21,82 +20,67 @@ const AddProduct = () => {
     const productImgHandler = async (event) => {
         let selectedFile = event.target.files[0];
         if(selectedFile && types.includes(selectedFile.type)){
-            setProductImg(selectedFile);
+            setImage(selectedFile);
             setError('')
         }
          else {
-        setProductImg(null);
+        setImage(null);
         setError('Please select a avlid image type')
     }
 
-    }
-
-    const addProduct = (e) => {
-        e.preventDefault();
-        setIsLoading(true);
-        console.log(productName, productPrice, productImg)
-        const uploadTask = storageBucket.ref(`product-images/${productImg.name}`).put(productImg);
-        uploadTask.on('state_changed', snapshot => {
-            const progress = (snapshot.bytesTransferred/snapshot.totalBytes) * 100;
-            console.log(progress);
-        }, 
-        err => {
-            setError(err.message)
-            setIsLoading(false)
-        }, () => {
-            storage.ref('product-images').child(productImg.name).getDownloadURL().then(url=> {
-                db.collection('product').add({
-                    productName: productName,
-                    productPrice: Number(productPrice),
-                    productImg: url,
-                    setProduct: setProduct,
-                    
-                }).then(()=> {
-                    setProductName('');
-                    setProductPrice(0);
-                    setProductImg(null)
-                    setError('')
-                    setIsLoading(false)
-                });
-                    
-                }).catch((error) => {
-                    setError(error.message);
-                    setIsLoading(false);
-
-
-
-                })
-           
-
-        }
-    )
-    }
-
-
-
     
+    setIsLoading(true)
+		event.preventDefault()
+		const newProduct = { name: name, price: price, image: image }
+		// TODO: meddela användaren att vi väntar på databasen - visa spinner t.ex.
+		try {
+			await addProduct(newProduct)
+			setName('')
+			setPrice('')
+			setImage(await getProducts())
 
-    return (
-        <div>
-            <h2>Add Product</h2>
-            <form onSubmit={addProduct}>
-                <label htmlFor="product-name">Name</label>
-                <input type="text" id="product-name" value={productName} onChange={(e) => setProductName(e.target.value)} required />
+		} catch(error) {
+			// TODO: visa felmeddelande för användaren
 
-                <label htmlFor="product-price">Price</label>
-                <input type="number" id="product-price" value={productPrice} onChange={(e) => setProductPrice(e.target.value)} required />
+		} finally {
+			setIsLoading(false);
+		}
+	
 
-                <label htmlFor="product-img">Image</label>
-                <input type="file" id="product-img" onChange={productImgHandler} required />
+	return (
+		<section>
+			<form className="form">
+			<h3> Register a new Product </h3>
+			<section className="column">
+				<label> Name </label>
+				<input type="text"
+					value={name}
+					onChange={e => setName(e.target.value)}
+					/>
+			</section>
 
-                {error && <p>{error}</p>}
+			<section className="column">
+				<label> Price </label>
+				<input type="text"
+					value={price}
+					onChange={e => setPrice(e.target.value)}
+					/>
+			</section>
 
-                <button type="submit" disabled={isLoading}>Add Product</button>
-            </form>
-        </div>
-    );
-};
+            <section className="column">
+				<label> Image </label>
+				<input type="text"
+					value={image}
+					onChange={e => setImage(e.target.value)}
+					/>
+			</section>
 
-
-
+			<button
+				disabled={isLoading}
+				onClick={productImgHandler} type="productImgHandler"> Register </button>
+			</form>
+		</section>
+	)
+}
+}
 export default AddProduct 
