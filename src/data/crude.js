@@ -1,6 +1,6 @@
 import { collection, getDocs, addDoc, deleteDoc, updateDoc, doc } from 'firebase/firestore/lite';
 import { db } from './fire.js';
-
+import 'firebase/firestore';
 
 
 const collectionName = 'products';
@@ -40,4 +40,3 @@ async function editProduct(key, updatedProduct) {
     await updateDoc(docRef, updatedProduct);
 }
 
-export { getProducts, addProduct, deleteProduct, editProduct };

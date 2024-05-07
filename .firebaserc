@@ -1,6 +1,7 @@
 {
   "projects": {
-    " ": "toy-webapp"
+    " ": "toy-webapp",
+    "default": "toy-webapp"
   },
   "targets": {},
   "etags": {}

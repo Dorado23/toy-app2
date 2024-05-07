@@ -1,17 +1,17 @@
 import React from 'react'
 import { useState } from 'react'
 import { useStore } from '../data/store.js'
-import { addProduct, getProducts} from '../data/crude.js'
-import { db } from '../data/crude.js'
+//import { addProduct, getProducts} from '../data/crude.js'
+import { db } from '../data/fire.js'
 
 
-const collectionRef = db.collection('collectionName');
+//const collectionRef = db.collection('collectionName');
 const AddProduct = () => {
 
 	const [isLoading, setIsLoading] = useState(false)
 	const [name, setName] = useState('')
 	const [price, setPrice] = useState(0)
-    const [imgage, setImage] = useState(null)
+    const [image, setImage] = useState(null)
 	const setProduct = useStore(state => state.setProduct)
     const [error, setError] = useState('')
 
@@ -32,7 +32,7 @@ const AddProduct = () => {
     setIsLoading(true)
 		event.preventDefault()
 		const newProduct = { name: name, price: price, image: image }
-		// TODO: meddela användaren att vi väntar på databasen - visa spinner t.ex.
+		
 		try {
 			await addProduct(newProduct)
 			setName('')
@@ -40,11 +40,12 @@ const AddProduct = () => {
 			setImage(await getProducts())
 
 		} catch(error) {
-			// TODO: visa felmeddelande för användaren
+			
 
 		} finally {
 			setIsLoading(false);
 		}
+		
 	
 
 	return (
