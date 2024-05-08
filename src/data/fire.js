@@ -1,8 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getFirestore } from "firebase/firestore";
-import { getStorage, ref } from "firebase/storage"
+import { getFirestore } from "firebase/firestore/lite";
+import { getStorage, ref } from "firebase/storage";
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -11,14 +11,12 @@ import { getStorage, ref } from "firebase/storage"
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCwTmAj_15T_Zq7PdWIchVKZ-9NIoTTUFg",
-  authDomain: "toy-webapp.firebaseapp.com",
-  databaseURL: "https://toy-webapp-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "toy-webapp",
-  storageBucket: "toy-webapp.appspot.com",
-  messagingSenderId: "820182315747",
-  appId: "1:820182315747:web:61d4af6da395ee1e670bd6",
-  measurementId: "G-CF9PDCEGXN"
+  apiKey: "AIzaSyCr0vn2cnGIzCyxvTIoAUXC-IKXoFqQXig",
+  authDomain: "toy-webapp-2.firebaseapp.com",
+  projectId: "toy-webapp-2",
+  storageBucket: "toy-webapp-2.appspot.com",
+  messagingSenderId: "441680120275",
+  appId: "1:441680120275:web:f6678fd83cb810012a4726"
 };
 
 // Initialize Firebase
@@ -29,4 +27,4 @@ const storage = getStorage(app)
 const storageRef = ref(storage)
 
 
-export { app, analytics, db, storage}
+export { app, analytics, db, storageRef} 

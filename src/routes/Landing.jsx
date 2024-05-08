@@ -2,6 +2,7 @@ import React from 'react';
 import Landing from './Landing.';
 import Navbar from '../components/Navbar';
 import AddProducts from '../components/AddProducts';
+import Products from "../routes/Products"
 
 
 
@@ -16,6 +17,7 @@ const Landing = () => (
             <App/>
             <Kundvagn/>
             <AddProducts/>
+            <Products/>
 
         </div>
        

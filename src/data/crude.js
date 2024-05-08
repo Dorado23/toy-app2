@@ -3,18 +3,23 @@ import { db } from './fire.js';
 import 'firebase/firestore';
 
 
-const collectionName = 'products';
+const collectionName = 'toys';
 const collectionRef = collection(db, collectionName);
 
 async function getProducts() {
+  console.log('crud 1');
     // Create a reference to the "products" collection in the database
     const productsCollection = collection(db, collectionName);
+    console.log('crud 2');
 
     // Fetch all documents in the "products" collection
     const productsSnapshot = await getDocs(productsCollection);
+    console.log('crud 3');
 
     // Map the documents to objects with key property
     const productsList = productsSnapshot.docs.map(doc => withKey(doc));
+    console.log('crud 4');
+
     return productsList;
 }
 
@@ -40,3 +45,4 @@ async function editProduct(key, updatedProduct) {
     await updateDoc(docRef, updatedProduct);
 }
 
+export { getProducts, editProduct, deleteProduct, addProduct }

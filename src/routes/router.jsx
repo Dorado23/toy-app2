@@ -2,7 +2,8 @@ import Landing from "./Landing";
 import Admin from "./Admin";
 import Login from "./Login";
 //import Details from "./Details";
-import NotFound from ":/NotFound";
+import NotFound from "./NotFound";
+import Products from "./Products"
 import { createHashRouter, RouterProvider } from "react-router-dom";
 
 
@@ -40,6 +41,11 @@ const router = createHashRouter([
         {
             path: "/NotFound",
             element: <NotFound/>   
+        },
+
+        {
+            path: "/Products",
+            element: <Products/>   
         },
 
 
