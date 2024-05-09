@@ -7,11 +7,11 @@ const Root =() => (
                 <h1>L-e-k</h1>
 
                <nav>
-               <NavLink to="/">Home</NavLink>
+               <NavLink to="/">Landing</NavLink>
                <NavLink to="/">Kundvagn</NavLink>
                <NavLink to="/">Login</NavLink>
-               <NavLink to="/products">Details</NavLink>
-               <NavLink to="/">Admin</NavLink>
+               <NavLink to="/products">Products</NavLink>
+               <NavLink to="/">AddProducts</NavLink>
                </nav>
             </header>   
 

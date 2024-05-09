@@ -1,11 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
 import { useStore } from '../data/store.js'
-//import { addProduct, getProducts} from '../data/crude.js'
+import { addProduct, getProducts} from '../data/crude.js'
 import { db } from '../data/fire.js'
+//import { collectionRef } from "../data/crude.js"
+import '../components/Products.css'
 
 
-//const collectionRef = db.collection('collectionName');
+//const collectionRef = collection(db, collectionName);
 const AddProduct = () => {
 
 	const [isLoading, setIsLoading] = useState(false)
