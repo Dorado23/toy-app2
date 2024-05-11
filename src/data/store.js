@@ -1,4 +1,6 @@
 import { create } from 'zustand'
+import Products from '../routes/Products'
+
 
 const useStore = create((set) => ({
 	Products: [
@@ -9,8 +11,17 @@ const useStore = create((set) => ({
 			price: 99,
 		}
 
-	]
+	],
+	setProducts: newProducts => set((state) => ({
+		Products: newProducts
+
+	})),
+	addProductsZustand: Products => set(state => ({
+		name: Products.name,
+		price: Products.price,
+		image: Products.image,
+	}))
 })) 
 
 
-export { useStore }
+export { useStore, Products }

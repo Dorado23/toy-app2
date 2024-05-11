@@ -14,7 +14,12 @@ const AddProduct = () => {
 	const [name, setName] = useState('')
 	const [price, setPrice] = useState(0)
     const [image, setImage] = useState(null)
+
 	const setProduct = useStore(state => state.setProduct)
+	useEffect(() => {
+		setProduct;
+    }, [setProduct]);
+
     const [error, setError] = useState('')
 
     const types =['image/png', 'image/jpeg']

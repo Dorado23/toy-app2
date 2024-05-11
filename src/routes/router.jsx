@@ -1,10 +1,11 @@
 import Landing from "./Landing";
-import Admin from "./Admin";
+import About from "./About";
 import Login from "./Login";
-//import Details from "./Details";
 import NotFound from "./NotFound";
-import Products from "./Products"
+import Products from "./Products";
+import AddProduct from "../components/AddProduct"
 import { createHashRouter, RouterProvider } from "react-router-dom";
+import EditProduct from "../components/EditProduct"
 
 
 const router = createHashRouter([
@@ -19,13 +20,13 @@ const router = createHashRouter([
         },
 
         {
-            path: "/Admin",
-            element: <Admin/>   
+            path: "/Adout",
+            element: <About/>   
         },
 
         {
-            path: "/Details",
-            element: <Details/>   
+            path: "/EditProduct",
+            element: <EditProduct/>   
         },
 
         {
@@ -46,6 +47,11 @@ const router = createHashRouter([
         {
             path: "/Products",
             element: <Products/>   
+        },
+
+        {
+            path: "/Addproduct",
+            element: <Addproduct/>   
         },
 
 

@@ -25,7 +25,7 @@ const Products= () => {
             db.collection('data')
                 .add({
                     name: name,
-                    Price: Number(price),
+                    price: Number(price),
                     image: image
                 })
 
@@ -82,7 +82,18 @@ const Products= () => {
 			{products.map(e => (
 				<Products key={e.key} products={e} />
 			))}
-		</div>
+		
+
+	<form onSubmit={handleSubmit}> 
+		<input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" />
+		<input type="number" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Price" />
+		<input type="text" value={image} onChange={(e) => setImage(e.target.value)} placeholder="Image" />
+		<button type="submit">Submit</button>
+	</form>
+
+	   </div>
+
+
 			
 		);
 	}
